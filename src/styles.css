@@ -77,7 +77,7 @@
 
   /* Serene premium emerald palette */
   --emerald-deep: oklch(0.37805 0.07303 168.94);
-  --sage-light: oklch(0.97248 0.00731 132.41);
+  --sage-light: oklch(0.97 0.006 132);
   --lime-accent: oklch(0.89715 0.17858 126.67);
   --charcoal: oklch(0.28083 0.03102 164.25);
 
