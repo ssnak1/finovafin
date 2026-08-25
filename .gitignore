@@ -39,3 +39,6 @@ dist-ssr
 # Supabase CLI
 supabase/.temp/
 supabase/.branches/
+
+# Credenciais públicas do Supabase (publishable key); RLS protege os dados.
+!.env
