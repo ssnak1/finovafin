@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // 3000 é a Site URL padrão do Supabase: manter a porta fixa aqui faz os
+    // links de confirmação de email caírem no app em vez de numa porta morta.
+    server: { port: 3000 },
+  },
 });

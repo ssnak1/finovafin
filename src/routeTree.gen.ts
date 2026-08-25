@@ -10,33 +10,131 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthedRouteImport } from './routes/_authed'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthedCartoesRouteImport } from './routes/_authed/cartoes'
+import { Route as AuthedCategoriasRouteImport } from './routes/_authed/categorias'
+import { Route as AuthedContasRouteImport } from './routes/_authed/contas'
+import { Route as AuthedDashboardRouteImport } from './routes/_authed/dashboard'
+import { Route as AuthedTransacoesRouteImport } from './routes/_authed/transacoes'
+import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthedRoute = AuthedRouteImport.update({
+  id: '/_authed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthedCartoesRoute = AuthedCartoesRouteImport.update({
+  id: '/cartoes',
+  path: '/cartoes',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedCategoriasRoute = AuthedCategoriasRouteImport.update({
+  id: '/categorias',
+  path: '/categorias',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedContasRoute = AuthedContasRouteImport.update({
+  id: '/contas',
+  path: '/contas',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedDashboardRoute = AuthedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedTransacoesRoute = AuthedTransacoesRouteImport.update({
+  id: '/transacoes',
+  path: '/transacoes',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/cartoes': typeof AuthedCartoesRoute
+  '/categorias': typeof AuthedCategoriasRoute
+  '/contas': typeof AuthedContasRoute
+  '/dashboard': typeof AuthedDashboardRoute
+  '/transacoes': typeof AuthedTransacoesRoute
+  '/auth/callback': typeof AuthCallbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/cartoes': typeof AuthedCartoesRoute
+  '/categorias': typeof AuthedCategoriasRoute
+  '/contas': typeof AuthedContasRoute
+  '/dashboard': typeof AuthedDashboardRoute
+  '/transacoes': typeof AuthedTransacoesRoute
+  '/auth/callback': typeof AuthCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authed': typeof AuthedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/_authed/cartoes': typeof AuthedCartoesRoute
+  '/_authed/categorias': typeof AuthedCategoriasRoute
+  '/_authed/contas': typeof AuthedContasRoute
+  '/_authed/dashboard': typeof AuthedDashboardRoute
+  '/_authed/transacoes': typeof AuthedTransacoesRoute
+  '/auth/callback': typeof AuthCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/cartoes'
+    | '/categorias'
+    | '/contas'
+    | '/dashboard'
+    | '/transacoes'
+    | '/auth/callback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/cartoes'
+    | '/categorias'
+    | '/contas'
+    | '/dashboard'
+    | '/transacoes'
+    | '/auth/callback'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authed'
+    | '/login'
+    | '/_authed/cartoes'
+    | '/_authed/categorias'
+    | '/_authed/contas'
+    | '/_authed/dashboard'
+    | '/_authed/transacoes'
+    | '/auth/callback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthedRoute: typeof AuthedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +146,89 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authed': {
+      id: '/_authed'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authed/cartoes': {
+      id: '/_authed/cartoes'
+      path: '/cartoes'
+      fullPath: '/cartoes'
+      preLoaderRoute: typeof AuthedCartoesRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/categorias': {
+      id: '/_authed/categorias'
+      path: '/categorias'
+      fullPath: '/categorias'
+      preLoaderRoute: typeof AuthedCategoriasRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/contas': {
+      id: '/_authed/contas'
+      path: '/contas'
+      fullPath: '/contas'
+      preLoaderRoute: typeof AuthedContasRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/dashboard': {
+      id: '/_authed/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthedDashboardRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/transacoes': {
+      id: '/_authed/transacoes'
+      path: '/transacoes'
+      fullPath: '/transacoes'
+      preLoaderRoute: typeof AuthedTransacoesRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthedRouteChildren {
+  AuthedCartoesRoute: typeof AuthedCartoesRoute
+  AuthedCategoriasRoute: typeof AuthedCategoriasRoute
+  AuthedContasRoute: typeof AuthedContasRoute
+  AuthedDashboardRoute: typeof AuthedDashboardRoute
+  AuthedTransacoesRoute: typeof AuthedTransacoesRoute
+}
+
+const AuthedRouteChildren: AuthedRouteChildren = {
+  AuthedCartoesRoute: AuthedCartoesRoute,
+  AuthedCategoriasRoute: AuthedCategoriasRoute,
+  AuthedContasRoute: AuthedContasRoute,
+  AuthedDashboardRoute: AuthedDashboardRoute,
+  AuthedTransacoesRoute: AuthedTransacoesRoute,
+}
+
+const AuthedRouteWithChildren =
+  AuthedRoute._addFileChildren(AuthedRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthedRoute: AuthedRouteWithChildren,
+  LoginRoute: LoginRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

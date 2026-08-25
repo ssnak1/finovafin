@@ -27,8 +27,10 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
+  /* Uma única família em todo o site. `--font-serif` aponta para a mesma pilha
+     de propósito: se algum componente usar `font-serif`, ainda sai Inter. */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --color-background: var(--background);
@@ -70,16 +72,20 @@
   --color-sage-light: var(--sage-light);
   --color-lime-accent: var(--lime-accent);
   --color-charcoal: var(--charcoal);
+
+  /* Financial semantics — entrada e saída de dinheiro */
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Serene premium emerald palette */
-  --emerald-deep: oklch(0.37805 0.07303 168.94);
-  --sage-light: oklch(0.97 0.006 132);
-  --lime-accent: oklch(0.89715 0.17858 126.67);
-  --charcoal: oklch(0.28083 0.03102 164.25);
+  /* Finova — verde esmeralda sobre superfícies quase pretas */
+  --emerald-deep: oklch(0.4 0.09 158);
+  --sage-light: oklch(0.97 0.006 160);
+  --lime-accent: oklch(0.76 0.18 152);
+  --charcoal: oklch(0.19 0.012 165);
 
   --background: var(--sage-light);
   --foreground: var(--charcoal);
@@ -87,67 +93,82 @@
   --card-foreground: var(--charcoal);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--charcoal);
-  --primary: var(--emerald-deep);
-  --primary-foreground: var(--sage-light);
-  --secondary: oklch(0.945 0.012 132);
+  --primary: oklch(0.58 0.15 152);
+  --primary-foreground: oklch(0.99 0.003 160);
+  --secondary: oklch(0.95 0.01 160);
   --secondary-foreground: var(--charcoal);
-  --muted: oklch(0.92 0.014 132);
-  --muted-foreground: oklch(0.45 0.03 162);
+  --muted: oklch(0.94 0.012 160);
+  --muted-foreground: oklch(0.5 0.02 162);
   --accent: var(--lime-accent);
-  --accent-foreground: var(--emerald-deep);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: color-mix(in oklch, var(--charcoal) 8%, transparent);
-  --input: color-mix(in oklch, var(--charcoal) 10%, transparent);
-  --ring: var(--emerald-deep);
-  --chart-1: var(--emerald-deep);
-  --chart-2: var(--lime-accent);
-  --chart-3: oklch(0.6 0.118 184.704);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --accent-foreground: oklch(0.19 0.012 165);
+  --destructive: oklch(0.58 0.21 25);
+  --destructive-foreground: oklch(0.99 0.003 160);
+  --border: color-mix(in oklch, var(--charcoal) 10%, transparent);
+  --input: color-mix(in oklch, var(--charcoal) 14%, transparent);
+  --ring: var(--primary);
+  --positive: oklch(0.55 0.14 152);
+  --negative: oklch(0.58 0.15 22);
+  --chart-1: oklch(0.58 0.15 152);
+  --chart-2: oklch(0.66 0.13 155);
+  --chart-3: oklch(0.73 0.11 158);
+  --chart-4: oklch(0.8 0.08 161);
+  --chart-5: oklch(0.86 0.05 164);
+  --sidebar: oklch(0.98 0.005 160);
+  --sidebar-foreground: var(--charcoal);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: oklch(0.99 0.003 160);
+  --sidebar-accent: oklch(0.95 0.01 160);
+  --sidebar-accent-foreground: var(--charcoal);
+  --sidebar-border: color-mix(in oklch, var(--charcoal) 10%, transparent);
+  --sidebar-ring: var(--primary);
 }
 
 .dark {
-  --background: var(--charcoal);
-  --foreground: var(--sage-light);
-  --card: var(--emerald-deep);
-  --card-foreground: var(--sage-light);
-  --popover: var(--emerald-deep);
-  --popover-foreground: var(--sage-light);
-  --primary: var(--lime-accent);
-  --primary-foreground: var(--emerald-deep);
-  --secondary: oklch(0.35 0.04 164);
-  --secondary-foreground: var(--sage-light);
-  --muted: oklch(0.35 0.04 164);
-  --muted-foreground: oklch(0.75 0.02 164);
-  --accent: var(--emerald-deep);
-  --accent-foreground: var(--sage-light);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: color-mix(in oklch, var(--sage-light) 12%, transparent);
-  --input: color-mix(in oklch, var(--sage-light) 15%, transparent);
-  --ring: var(--lime-accent);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Superfícies: fundo quase preto, cards um degrau acima, popovers mais dois */
+  --background: oklch(0.16 0.008 165);
+  --foreground: oklch(0.97 0.004 160);
+  --card: oklch(0.2 0.011 165);
+  --card-foreground: oklch(0.97 0.004 160);
+  --popover: oklch(0.23 0.013 165);
+  --popover-foreground: oklch(0.97 0.004 160);
+
+  /* Verde de marca: vibrante o bastante para funcionar como cor de ação */
+  --primary: oklch(0.76 0.18 152);
+  --primary-foreground: oklch(0.16 0.01 165);
+  --secondary: oklch(0.25 0.013 165);
+  --secondary-foreground: oklch(0.97 0.004 160);
+  --muted: oklch(0.25 0.013 165);
+  --muted-foreground: oklch(0.68 0.015 162);
+  --accent: oklch(0.76 0.18 152);
+  --accent-foreground: oklch(0.16 0.01 165);
+  --destructive: oklch(0.65 0.19 22);
+  --destructive-foreground: oklch(0.97 0.004 160);
+
+  --border: color-mix(in oklch, oklch(0.97 0.004 160) 9%, transparent);
+  --input: color-mix(in oklch, oklch(0.97 0.004 160) 13%, transparent);
+  --ring: oklch(0.76 0.18 152);
+
+  --positive: oklch(0.78 0.15 152);
+  /* Coral dessaturado: a maioria dos lançamentos é despesa, então esta cor
+     aparece muito. Vive um degrau abaixo de --destructive de propósito —
+     gastar não é a mesma urgência visual que apagar algo. */
+  --negative: oklch(0.73 0.12 19);
+
+  /* Rampa de verdes para as fatias do donut e as barras */
+  --chart-1: oklch(0.78 0.17 152);
+  --chart-2: oklch(0.68 0.15 154);
+  --chart-3: oklch(0.57 0.13 157);
+  --chart-4: oklch(0.46 0.1 160);
+  --chart-5: oklch(0.36 0.07 163);
+
+  --sidebar: oklch(0.18 0.01 165);
+  --sidebar-foreground: oklch(0.97 0.004 160);
+  --sidebar-primary: oklch(0.76 0.18 152);
+  --sidebar-primary-foreground: oklch(0.16 0.01 165);
+  --sidebar-accent: oklch(0.25 0.013 165);
+  --sidebar-accent-foreground: oklch(0.97 0.004 160);
+  --sidebar-border: color-mix(in oklch, oklch(0.97 0.004 160) 8%, transparent);
+  --sidebar-ring: oklch(0.76 0.18 152);
 }
 
 @layer base {
@@ -158,5 +179,12 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    /* Herdada por tudo — nenhuma página precisa repetir `font-sans` */
+    font-family: var(--font-sans);
+  }
+
+  /* Números de dinheiro alinham por coluna em tabelas e listas */
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
